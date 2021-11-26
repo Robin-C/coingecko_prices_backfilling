@@ -7,17 +7,17 @@ from google.cloud import bigquery
 
 
 # Change coins here
-coins = ['ethereum', 'bitcoin', 'convex-finance', 'curve-dao-token', 'usd-coin']
+coins = ['ethereum', 'bitcoin', 'convex-finance']
 
-# Change date here. Go to https://www.epochconverter.com/ to convert date to unix ts
+# Change dates here. Go to https://www.epochconverter.com/ to convert date to unix ts
 date_from = '1609462861' # '2021-01-01'
-date_to = '1637629261' # '2021-11-23'
+date_to = '1637854758' # '2021-11-25'
 
 list = list()
 loaded_at = loaded_at = datetime.datetime.now()
 
 for coin in coins:
-  res = requests.get("https://api.coingecko.com/api/v3/coins/%s/market_chart/range?vs_currency=usd&from=%s&to=%s" % coin, date_from, date_to)
+  res = requests.get("https://api.coingecko.com/api/v3/coins/%s/market_chart/range?vs_currency=usd&from=%s&to=%s" % (coin, date_from, date_to))
   json = res.json()
   for i in json['prices']:
     try:
